@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Kích vào button để lấy toạ độ của bạn</p>
+
+<button onclick="getLocation()">Lấy vị trí</button>
+
+<p id="demo"></p>
+
+<script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation không được hỗ trợ bởi trình duyệt này.";
+        }
+    }
+
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+            " Longitude:"  + position.coords.longitude;
+    }
+    function showPosition1(position) {
+        x.innerHTML = position.coords.latitude + "," + position.coords.longitude;
+        var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="
+            +x.innerHTML+"&zoom=14&size=400×300&sensor=false";
+
+        // document.getElementById("demo").innerHTML = "<img src="+img_url+">";
+    }
+</script>
+</body>
+</html>
